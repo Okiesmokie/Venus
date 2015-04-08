@@ -21,6 +21,8 @@ public class CharacterSprite : MonoBehaviour {
 				{ "Hair",	hairSpritePath,		defaultHairSpritePath }
 			};
 
+            // Random comment to test git
+
 			var spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
 			foreach(var renderer in spriteRenderers) {
