@@ -2,13 +2,20 @@
 using System;
 using System.Collections;
 
-public class CharacterSprite : MonoBehaviour {
+public class CharacterSpriteScript : MonoBehaviour {
 	private const string defaultBodySpritePath = "body/male/light";
 	private const string defaultHairSpritePath = "hair/male/messy1/black";
+	private const string defaultChestSpritePath = "torso/leather/chest_male";
+	private const string defaultShouldersSpritePath = "torso/leather/shoulders_male";
+	private const string defaultLegsSpritePath = "legs/pants/male/white_pants_male";
+	private const string defaultFeetSpritePath = "feet/shoes/male/brown_shoes_male";
 
 	public string bodySpritePath = defaultBodySpritePath;
 	public string hairSpritePath = defaultHairSpritePath;
-
+	public string chestSpritePath = defaultChestSpritePath;
+	public string shouldersSpritePath = defaultShouldersSpritePath;
+	public string legsSpritePath = defaultLegsSpritePath;
+	public string feetSpritePath = defaultFeetSpritePath;
 
 	private SpriteRenderer spriteRenderer;
 
@@ -17,11 +24,13 @@ public class CharacterSprite : MonoBehaviour {
 		try {
 			// Store paths in an array for easy iteration
 			var spritePaths = new string[,] {
-				{ "Body",	bodySpritePath,		defaultBodySpritePath },
-				{ "Hair",	hairSpritePath,		defaultHairSpritePath }
+				{ "Body",		bodySpritePath,			defaultBodySpritePath },
+				{ "Hair",		hairSpritePath,			defaultHairSpritePath },
+				{ "Chest",		chestSpritePath,		defaultChestSpritePath },
+				{ "Shoulders",	shouldersSpritePath,	defaultShouldersSpritePath },
+				{ "Legs",		legsSpritePath,			defaultLegsSpritePath },
+				{ "Feet",		feetSpritePath,			defaultFeetSpritePath }
 			};
-
-            // Random comment to test git
 
 			var spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
