@@ -2,13 +2,13 @@
 using System;
 using System.Collections;
 
-public class CharacterSpriteScript : MonoBehaviour {
-	private const string defaultBodySpritePath = "body/male/light";
-	private const string defaultHairSpritePath = "hair/male/messy1/black";
-	private const string defaultChestSpritePath = "torso/leather/chest_male";
-	private const string defaultShouldersSpritePath = "torso/leather/shoulders_male";
-	private const string defaultLegsSpritePath = "legs/pants/male/white_pants_male";
-	private const string defaultFeetSpritePath = "feet/shoes/male/brown_shoes_male";
+public class CharacterSprite : MonoBehaviour {
+	protected const string defaultBodySpritePath = "body/male/light";
+	protected const string defaultHairSpritePath = "hair/male/messy1/black";
+	protected const string defaultChestSpritePath = "torso/leather/chest_male";
+	protected const string defaultShouldersSpritePath = "torso/leather/shoulders_male";
+	protected const string defaultLegsSpritePath = "legs/pants/male/white_pants_male";
+	protected const string defaultFeetSpritePath = "feet/shoes/male/brown_shoes_male";
 
 	public string bodySpritePath = defaultBodySpritePath;
 	public string hairSpritePath = defaultHairSpritePath;
@@ -17,10 +17,12 @@ public class CharacterSpriteScript : MonoBehaviour {
 	public string legsSpritePath = defaultLegsSpritePath;
 	public string feetSpritePath = defaultFeetSpritePath;
 
-	private SpriteRenderer spriteRenderer;
+	protected SpriteRenderer spriteRenderer;
+	protected Rigidbody2D rigidBody;
+	protected Animator[] animators;
 
 	// Use this for initialization
-	void LateUpdate() {
+	protected virtual void LateUpdate() {
 		try {
 			// Store paths in an array for easy iteration
 			var spritePaths = new string[,] {
@@ -60,8 +62,13 @@ public class CharacterSpriteScript : MonoBehaviour {
 			Debug.Log(e.ToString() + "\n" + e.Source);
 		}
 	}
+
+	protected virtual void Start() {
+		rigidBody = GetComponent<Rigidbody2D>();
+		animators = GetComponentsInChildren<Animator>();
+	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
 	}
 }

@@ -21,7 +21,7 @@ public class SpawnCharacter : MonoBehaviour {
 			Vector3 pos = new Vector3(1.0f, 1.0f, 0.0f);
 			var newObj = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
 
-			newObj.GetComponent<CharacterSpriteScript>().bodySpritePath = "body/male/light";
+			newObj.GetComponent<CharacterSprite>().bodySpritePath = "body/male/light";
 
 			elapsedTime = 0.0f;
 		}
