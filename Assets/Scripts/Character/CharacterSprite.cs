@@ -21,18 +21,23 @@ public class CharacterSprite : MonoBehaviour {
 	protected Rigidbody2D rigidBody;
 	protected Animator[] animators;
 
+	public enum Directions {
+		LEFT = -1, DOWN = -1,
+		RIGHT = 1, UP = 1
+	}
+
 	// Use this for initialization
 	protected virtual void LateUpdate() {
 		try {
 			// Store paths in an array for easy iteration
 			string[,] spritePaths = new string[,] {
 				// GameObject	Path to spritesheet		Default path to spritesheet		Sorting Number
-				{ "Body",		bodySpritePath,			defaultBodySpritePath,			"0" },
-				{ "Hair",		hairSpritePath,			defaultHairSpritePath,			"5" },
-				{ "Chest",		chestSpritePath,		defaultChestSpritePath,			"2" },
-				{ "Shoulders",	shouldersSpritePath,	defaultShouldersSpritePath,		"3" },
-				{ "Legs",		legsSpritePath,			defaultLegsSpritePath,			"1" },
-				{ "Feet",		feetSpritePath,			defaultFeetSpritePath,			"2" }
+				{ "Body",		bodySpritePath,			defaultBodySpritePath },
+				{ "Hair",		hairSpritePath,			defaultHairSpritePath },
+				{ "Chest",		chestSpritePath,		defaultChestSpritePath },
+				{ "Shoulders",	shouldersSpritePath,	defaultShouldersSpritePath },
+				{ "Legs",		legsSpritePath,			defaultLegsSpritePath },
+				{ "Feet",		feetSpritePath,			defaultFeetSpritePath }
 			};
 
 			var spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -56,10 +61,6 @@ public class CharacterSprite : MonoBehaviour {
 						renderer.sprite.name = renderer.name + "_sprite";
 						renderer.material.mainTexture = atlas as Texture;
 						renderer.material.shader = Shader.Find("Sprites/Default");
-
-					//	renderer.sortingOrder = (int)(transform.position.y * 20 + int.Parse(spritePaths[i, 3]));
-
-						//renderer.sortingOrder = renderer.sortingOrder; // nop
 					}
 				}
 			}
@@ -75,5 +76,8 @@ public class CharacterSprite : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected virtual void Update () {
+	}
+
+	protected virtual void OnAwake() {
 	}
 }

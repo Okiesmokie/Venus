@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class GameControl : MonoBehaviour {
+public partial class GameControl : MonoBehaviour {
 	#region Singleton Code
 	public static GameControl instance;
 	#endregion
 
 	private Dictionary<string, object> gameFlags = new Dictionary<string,object>();
+
+	public GameObject playerGameObject;
 
 	#region Player Attributes Helpers
 	public int PlayerHP {
@@ -62,6 +64,16 @@ public class GameControl : MonoBehaviour {
 			SetFlag<float>("PlayerY", value);
 		}
 	}
+
+	public bool PlayerCanMove {
+		get {
+			return GetFlag<bool>("PlayerCanMove", true);
+		}
+
+		set {
+			SetFlag<bool>("PlayerCanMove", value);
+		}
+	}
 	#endregion
 
 	void Awake() {
@@ -75,13 +87,8 @@ public class GameControl : MonoBehaviour {
 
 		saveFileName = Application.persistentDataPath + "/gamedata_debug.dat";
 
-		//PlayerHP = 100;
-		//PlayerMaxHP = 100;
-
 		//SaveGame();
 		LoadGame();
-
-		Debug.Log(string.Format("Player HP: {0}/{1}", PlayerHP, PlayerMaxHP));
 	}
 
 	void OnGUI() {
@@ -91,13 +98,13 @@ public class GameControl : MonoBehaviour {
 	}
 
 	#region Flag Getting/Setting
-	public T GetFlag<T>(string key) {
+	public T GetFlag<T>(string key, T defaultValue = default(T)) {
 		T flag;
 
 		try {
 			flag = (T)gameFlags[key];
 		} catch(KeyNotFoundException) {
-			flag = default(T);
+			flag = defaultValue;
 		}
 
 		return flag;
@@ -112,9 +119,6 @@ public class GameControl : MonoBehaviour {
 	private string saveFileName;
 
 	public void SaveGame() {
-		SetFlag<int>("testFlag", 69);
-		SetFlag<string>("secondTestFlag", "Foo");
-
 		try {
 			using(var fs = new FileStream(saveFileName, FileMode.Create, FileAccess.Write)) {
 				var bf = new BinaryFormatter();

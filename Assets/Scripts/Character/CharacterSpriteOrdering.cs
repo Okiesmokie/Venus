@@ -5,19 +5,23 @@ using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class CharacterSpriteOrdering : MonoBehaviour {
-	Dictionary<string,int> spriteOrders = new Dictionary<string,int> {
+	private Dictionary<string,int> spriteOrders = new Dictionary<string,int> {
 		// GameObject	Path to spritesheet		Default path to spritesheet		Sorting Number
 		{ "Body",		0 },
-		{ "Hair",		5 },
+		{ "Hair",		4 },
 		{ "Chest",		2 },
 		{ "Shoulders",	3 },
 		{ "Legs",		1 },
 		{ "Feet",		2 }
 	};
 
+	public static System.Random randGen = new System.Random();
+	private int randomSortValue;
+
 	// Use this for initialization
 	void Start () {
-	
+
+		randomSortValue = randGen.Next(0, 10);
 	}
 	
 	// Update is called once per frame
@@ -28,7 +32,7 @@ public class CharacterSpriteOrdering : MonoBehaviour {
 			foreach(var r in spriteRenderers) {
 				foreach(KeyValuePair<string,int> entry in spriteOrders) {
 					if(r.name.ToLowerInvariant() == entry.Key.ToLowerInvariant()) {
-						r.sortingOrder = (int)(transform.position.y * -200.0f) + entry.Value;
+						r.sortingOrder = (int)(transform.position.y * -200.0f) + entry.Value + randomSortValue;
 					}
 				}
 			}
