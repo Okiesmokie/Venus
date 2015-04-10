@@ -145,8 +145,8 @@ Transform:
   - {fileID: 425910}
   - {fileID: 434904}
   - {fileID: 406702}
-  - {fileID: 424398}
   - {fileID: 475574}
+  - {fileID: 424398}
   - {fileID: 454074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -161,7 +161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414118}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &425910
 Transform:
   m_ObjectHideFlags: 1
@@ -209,7 +209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 414118}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!50 &5047422
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -235,9 +235,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.00362476707, y: -.251812339}
+  m_Offset: {x: -.0054371506, y: -.244562864}
   serializedVersion: 2
-  m_Size: {x: .242003962, y: .146375299}
+  m_Size: {x: .144135639, y: .131876349}
 --- !u!95 &9516196
 Animator:
   serializedVersion: 3
@@ -432,7 +432,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -238999085
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1f612691c93fc20499e270765ae2c2cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21246146
